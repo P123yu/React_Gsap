@@ -1,0 +1,36 @@
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React, { useEffect } from "react";
+
+gsap.registerPlugin(ScrollTrigger);
+
+function Try() {
+  useEffect(() => {
+    gsap.to(".three .m", {
+      rotate: 360,
+      scrollTrigger: {
+        trigger: ".three",
+        start: "top center", // Start the animation when the top of .three hits the center of the viewport
+        end: "top 30%", // End the animation when the bottom of .three hits the 60% of the viewport
+        scrub: true, // Smoothly animate the rotation based on scroll position
+        markers: true, // Markers for debugging
+      },
+    });
+  }, []);
+
+  return (
+    <div>
+      <div className="one bg-red-200 h-screen w-full">
+        <p>Hello</p>
+      </div>
+      <div className="two bg-blue-100 h-screen w-full">
+        <p>adsfghjk</p>
+      </div>
+      <div className="three bg-yellow-200 h-screen w-full">
+        <div className="m ml-12 pt-4 bg-red-400 h-20 w-20">Man</div>
+      </div>
+    </div>
+  );
+}
+
+export default Try;
